@@ -5,6 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <style>
+	
+	/* Mobile dropdown menu */
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: relative; /* Needed for the dropdown */
+}
+
+/* Hide the links initially */
+.menu-bar a {
+    display: inline-block;
+}
+
+.menu-links {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #3a3d42;
+    flex-direction: column;
+    display: none; /* Hide by default */
+    text-align: center;
+}
+
+.menu-links a {
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-links a:hover {
+    background: #007BFF;
+}
+
+/* Show the dropdown when active */
+.menu-bar .show {
+    display: flex;
+}
+
+/* Styles for the hamburger menu */
+#menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+}
+
+#menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 4px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Mobile-specific styles for when the menu is open */
+@media (max-width: 768px) {
+    .menu-bar a {
+        display: none; /* Hide the links on mobile */
+    }
+
+    .menu-links a {
+        display: block;
+        width: 100%;
+    }
+}
+
 	html {
     scroll-behavior: smooth;
 }
@@ -176,11 +250,17 @@
         <h1><span class="white">Veri</span><span class="blue">Spy</span></h1>
     </section>
 
-    <nav class="menu-bar">
+<nav class="menu-bar">
+    <div class="menu-toggle" id="menu-toggle">
+        &#9776; <!-- Hamburger Icon -->
+    </div>
+    <div class="menu-links" id="menu-links">
         <a href="#features">Features</a>
         <a href="#why-you-should">Why You Should</a>
         <a href="#device-compatibility">Is My Device Compatible?</a>
-    </nav>
+    </div>
+</nav>
+
 
     <section class="hero">
         <p>Suspecting your partner of cheating can lead to chronic stress, anxiety, and even depression. Knowing the truth can help you be your best self, for your own sake, but also for your relationship. VeriSpy recommends mSpy's undetectable software to monitor the device of those you're concerned about. Getting started is easy, get the answers you want today.</p>
@@ -224,5 +304,16 @@
         </h1>
         <p>Stop relying on a hunch. Find out the truth.</p>
     </section>
+	<script>
+    // Get references to the toggle button and the menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuLinks = document.querySelector('.menu-links');
+
+    // Add event listener to toggle the menu on click
+    menuToggle.addEventListener('click', () => {
+        menuLinks.classList.toggle('show');
+    });
+</script>
+
 </body>
 </html>
